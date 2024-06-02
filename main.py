@@ -16,7 +16,8 @@ class BrownianPolicy():
         # act[0] *= 2.0
         # act[0] -= 1.0
         # return act.detach().numpy()
-        return np.random.randint(0, 4)
+        # return np.random.randint(0, 4)
+        return np.random.rand(self.action_dim[0])
     
     # def update(self)
 
