@@ -1,6 +1,7 @@
 import torch
 import torch.nn as nn
 from collections import OrderedDict
+import numpy as np
 
 def build_mlp(input_size, output_size, n_layers, size):
     """
@@ -43,7 +44,7 @@ def build_mlp(input_size, output_size, n_layers, size):
     #########          END YOUR CODE.          ############
 
 
-device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+device = torch.device("mps" if torch.backends.mps.is_available else "cpu")
 
 
 def np2torch(x, cast_double_to_float=True):
@@ -53,7 +54,8 @@ def np2torch(x, cast_double_to_float=True):
         2. Move it to the GPU (if CUDA is available)
         3. Optionally casts float64 to float32 (torch is picky about types)
     """
-    x = torch.from_numpy(x).to(device)
-    if cast_double_to_float and x.dtype is torch.float64:
-        x = x.float()
+    # if cast_double_to_float and x.dtype is np.float64:
+        # x = torch.from_numpy(x).float().to(device)
+    # else:
+    x = torch.from_numpy(x).float().to(device) 
     return x
