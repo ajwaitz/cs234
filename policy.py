@@ -132,7 +132,7 @@ class GaussianPolicy(BasePolicy, nn.Module):
         loc = self.network(observations)
         std = torch.square(self.std())
         # print(loc.device, std.device)
-        distribution = ptd.MultivariateNormal(loc, covariance_matrix=torch.eye(std.shape[0]).to(torch.device("mps")) * std)
+        distribution = ptd.MultivariateNormal(loc, covariance_matrix=torch.eye(std.shape[0]) * std)
         #######################################################
         #########          END YOUR CODE.          ############
         return distribution
