@@ -38,6 +38,7 @@ def build_mlp(input_size, output_size, n_layers, size):
         model.append(nn.ReLU())
 
     model.append(nn.Linear(size, output_size))
+    # model.append(nn.ReLU())
 
     return model
     #######################################################
